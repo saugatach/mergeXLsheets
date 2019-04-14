@@ -29,7 +29,21 @@ class MergeXLsheets():
         """Prints the sheet names only"""
         print(self.xls.sheet_names)
 
-    def mergedatabases(self, xls, mergeid, fillnachar, how):
+    # TODO: Decide on the how="outer" vs how="col" options
+
+    def mergedatabases(self, xls, mergeid, fillnachar, how="col"):
+
+        if how=="col":
+            mergedatabasescolumnwise(self, xls, mergeid, fillnachar, "outer")
+        else:
+            mergedatabasesrowwise(self, xls, mergeid, fillnachar, "outer")
+
+    # TODO: add another function to merge sheets vertically: mergedatabasesrowwise()
+
+    # TODO: Add function to export every sheet to their own CSV file
+
+
+    def mergedatabasescolumnwise(self, xls, mergeid, fillnachar, how):
         """Merges XL sheets"""
 
         data_frames = []
